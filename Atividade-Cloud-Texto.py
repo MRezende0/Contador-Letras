@@ -3,27 +3,15 @@ import tkinter as tk
 from tkinter import filedialog
 from unidecode import unidecode
 
-# Atividade 01 - Carregar arquivo
 root = tk.Tk()
 root.withdraw()
 file_path = filedialog.askopenfilename()
 print(file_path)
 
 
-
-# Atividade 02 - Retire os acentos e exiba o texto reescrito
 def remover_acentos(txt):
     return ''.join(c for c in txt if c not in string.punctuation).translate(str.maketrans('', '', 'áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ'))
 
-
-
-# Atividade 03 - Realize a contagem das palavras (que deverão ser ranqueadas em forma decrescente)
-# def contar_palavras(texto):
-#     palavras = texto.split()
-#     contagem = {}
-#     for palavra in palavras:
-#         contagem[palavra] = contagem.get(palavra, 0) + 1
-#     return contagem
 
 def obtendo_letras(texto):
     texto = unidecode(texto)
@@ -59,7 +47,6 @@ def exibir_ranking(cont):
         print(f'{l}: {cont}')
 
 
-# Atividade 04 - Permita ao usuário saber qual palavra que ele deseja e quantas aparições.
 def escolher_letras(texto):
     letras = input("Insira a letra que deseja saber quantas vezes aparece no texto: ")
     letras = letras.split(",")
@@ -72,8 +59,6 @@ def escolher_letras(texto):
         print(f"A letra '{letra}' aparece {num_ocorrencias} vezes no texto.")
 
 
-
-# Atividade 06 - Mostre um menu para as escolhas acima e use o 0 para encerrar a aplicação.
 def exibir_menu():
     print('-----------------------------------------------')
     print('MENU DE OPÇÕES:')
@@ -107,7 +92,6 @@ if __name__ == '__main__':
         elif opcao == '3':
             escolher_letras(texto)
 
-        # Atvidade 05a - Exibir a palavra com mais aparição.
         elif opcao == '4':
             cont = contar_letras(texto)
             ranking = sorted(cont.items(),
@@ -115,7 +99,6 @@ if __name__ == '__main__':
             print(
                 f'A letra com mais aparições é "{ranking[0][0]}" com {ranking[0][1]} aparições.')
             
-        # Atvidade 05b - Exibir a palavra com menos aparição
         elif opcao == '5':
             cont = contar_letras(texto)
             ranking = sorted(cont.items(), key=lambda x: x[1])
